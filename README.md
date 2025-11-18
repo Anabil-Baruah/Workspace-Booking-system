@@ -231,8 +231,8 @@ The frontend is built with `VITE_API_BASE_URL=http://backend:3000/api` to call t
    - `VITE_API_BASE_URL` (your backend URL)
 
 ### Deployment Links
-- **Backend**: [Deploy to Render](https://render.com)
-- **Frontend**: [Deploy to Netlify](https://netlify.com)
+- **Backend**: [Deploy to Render](https://workspace-booking-api-0ttg.onrender.com/api)
+- **Frontend**: [Deploy to Netlify](https://691cc78bb0705e486235d49b--magnificent-arithmetic-51b0fd.netlify.app/)
 
 ## 🧪 Testing
 
