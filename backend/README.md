@@ -19,7 +19,7 @@ src/
 ## Setup
 
 ```bash
-cd server
+cd backend
 npm install
 cp .env.example .env
 npm run dev

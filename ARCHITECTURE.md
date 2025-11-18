@@ -39,15 +39,15 @@ This workspace booking system follows **clean architecture** principles with cle
 │  └─────────────────────┼─────────────────────┘              │
 │                        ▼                                    │
 │  ┌──────────────────────────────────────────┐               │
-│  │          Utils Layer (Pure Functions)    │               │
-│  │  ┌─────────┐  ┌──────────┐  ┌─────────┐  │               │
-│  │  │ pricing │  │validation│  │datetime │  │               │
-│  │  └─────────┘  └──────────┘  └─────────┘  │               │
+│  │          Utils Layer (Pure Functions)     │              │
+│  │  ┌─────────┐  ┌──────────┐  ┌─────────┐ │                │
+│  │  │ pricing │  │validation│  │datetime │ │                │
+│  │  └─────────┘  └──────────┘  └─────────┘ │                │
 │  └──────────────────────────────────────────┘               │
 │                        │                                    │
 │                        ▼                                    │
 │  ┌──────────────────────────────────────────┐               │
-│  │       Storage Layer (In-Memory DB)       │               │
+│  │       Storage Layer (In-Memory DB)        │              │
 │  │  ┌─────────┐  ┌─────────┐                │               │
 │  │  │  Rooms  │  │Bookings │                │               │
 │  │  │  Array  │  │  Array  │                │               │
@@ -94,7 +94,7 @@ interface Booking {
 
 ## Backend Layers
 
-### 1. Routes Layer (`server/src/routes/`)
+### 1. Routes Layer (`backend/src/routes/`)
 
 **Responsibility**: HTTP endpoint definitions and request/response handling
 
@@ -108,7 +108,7 @@ interface Booking {
 - `bookings.ts` - POST /api/bookings, GET /api/bookings, POST /api/bookings/:id/cancel
 - `analytics.ts` - GET /api/analytics
 
-### 2. Services Layer (`server/src/services/`)
+### 2. Services Layer (`backend/src/services/`)
 
 **Responsibility**: Business logic orchestration
 
@@ -130,7 +130,7 @@ interface Booking {
 - Use utils for calculations
 - Interact with storage layer
 
-### 3. Models Layer (`server/src/models/`)
+### 3. Models Layer (`backend/src/models/`)
 
 **Responsibility**: TypeScript interfaces and type definitions
 
@@ -142,7 +142,7 @@ interface Booking {
 - `Room.ts` - Room interface
 - `Booking.ts` - Booking interface + CreateBookingDTO
 
-### 4. Storage Layer (`server/src/db/`)
+### 4. Storage Layer (`backend/src/db/`)
 
 **Responsibility**: Data persistence (currently in-memory)
 
@@ -156,16 +156,16 @@ interface Booking {
 // Current: In-memory
 const storage = new InMemoryStorage();
 
-// Future: if PostgreSQL
+// Future: PostgreSQL
 const storage = new PostgreSQLStorage(connectionString);
 
-// Future: if MongoDB
+// Future: MongoDB
 const storage = new MongoDBStorage(mongoUri);
 ```
 
 Services remain **unchanged** during migration.
 
-### 5. Utils Layer (`server/src/utils/`)
+### 5. Utils Layer (`backend/src/utils/`)
 
 **Responsibility**: Pure functions with no side effects
 
@@ -508,7 +508,7 @@ For similar projects:
 
 ## Testing Strategy
 
-Implemented with Vitest under `server/test/`:
+Implemented with Vitest under `backend/test/`:
 - `pricing.test.ts` – peak/off-peak billing
 - `validation.test.ts` – duration and ordering rules
 - `cancellation.test.ts` – 2-hour rule and service flow
@@ -593,7 +593,7 @@ Local development and demo use Docker Compose:
 ```
 services:
   backend:
-    build: ./server
+    build: ./backend
     ports:
       - "3000:3000"
   frontend:
@@ -648,7 +648,7 @@ The frontend is built with `VITE_API_BASE_URL` pointing to the backend service n
 
 ### Environment Variables
 
-**Backend** (`server/.env`):
+**Backend** (`backend/.env`):
 ```bash
 PORT=3000
 NODE_ENV=production

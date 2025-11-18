@@ -166,7 +166,7 @@ Response:
 
 ```
 /
-├── server/                             # Node.js + Express backend
+├── backend/                             # Node.js + Express backend
 │   ├── src/
 │   │   ├── models/                     # Data models (Room, Booking)
 │   │   ├── db/                         # In-memory storage
@@ -238,7 +238,7 @@ The frontend is built with `VITE_API_BASE_URL=http://backend:3000/api` to call t
 
 ```bash
 # Backend
-cd server
+cd backend
 npm test
 ```
 

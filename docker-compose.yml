@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   backend:
-    build: ./server
+    build: ./backend
     environment:
       - NODE_ENV=production
       - PORT=3000
