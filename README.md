@@ -166,7 +166,7 @@ Response:
 
 ```
 /
-├── backend/                             # Node.js + Express backend
+├── backend/                            # Node.js + Express + Typescript backend
 │   ├── src/
 │   │   ├── models/                     # Data models (Room, Booking)
 │   │   ├── db/                         # In-memory storage
@@ -182,19 +182,24 @@ Response:
 │   │   ├── cancellation.test.ts
 │   │   ├── validation.test.ts
 │   │   └── analytics.test.ts
-│   ├── package.json
+|   ├── Dockerfile                     # Dockerfile for backend
+│   ├── package.json    
 │   └── tsconfig.json
 │
-├── frontend/                           # React + Vite frontend
+├── frontend/                           # React + Typescript + Vite frontend
 │   ├── src/
 │   │   ├── components/                 # React components
+|   |   ├── hooks/                      # Custom React hooks
+|   │   ├── lib/                        # API client, utils
 │   │   ├── pages/                      # Page components
 │   │   ├── services/                   # API client
 │   │   ├── types/                      # TypeScript types
 │   │   └── main.tsx                    # App entry point
+|   ├── Dockerfile                      # Dockerfile for frontend
 │   ├── package.json
 │   └── vite.config.ts
-│
+|
+├── docker-compose.yml                  # Docker Compose setup
 ├── README.md                           # This file
 └── ARCHITECTURE.md                     # Technical architecture docs
 ```
